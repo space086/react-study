@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>state</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const root = document.getElementById("root");
+    let counter = 0;
+
+    function countUp() {
+      counter++;
+      render();
+    }
+    function render() { /* 리렌더링 */
+      ReactDOM.render(<Container />, root);
+    }
+
+    /*
+    리액트는 바닐라 자바스크립트랑 달리 바뀐 부분만 업데이트 한다. (counter만 업데이트)
+    -> 인터렉티브 어플 만들 때 유용함 (전부 리렌더링하지 않으니 사용성에 좋음)
+    */
+
+    const Container = () => {
+      return (
+        <div>
+          <h3>Total clicks: {counter}</h3>
+          <button onClick={countUp}>Click me</button>
+        </div>
+      );
+    };
+    render();
+  </script>
+</html>
