@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>converter</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const root = document.getElementById("root");
+
+    const ConvertTime = () => {
+      const [time, setTime] = React.useState();
+      const [flipped, setFlipped] = React.useState(false);
+
+      const onChange = ({ target: { value } }) => {
+        setTime(value);
+      };
+      const resetInput = () => setTime(0);
+      const onFlip = () => {
+        resetInput();
+        setFlipped((current) => !current);
+      };
+      return (
+        <div>
+          {flipped ? (
+            <h4>convert {time} hours to minutes</h4>
+          ) : (
+            <h4>convert {time} minutes to hours</h4>
+          )}
+
+          <label htmlFor="minutes">Minutes</label>
+          <input //
+            value={flipped ? time * 60 : time}
+            id="minutes"
+            type="number"
+            placeholder="Minutes"
+            onChange={onChange}
+            disabled={flipped === true}
+          />
+          <br />
+          <label htmlFor="hours">Hours</label>
+          <input //
+            value={flipped ? time : time / 60}
+            id="hours"
+            type="number"
+            placeholder="Hours"
+            onChange={onChange}
+            disabled={flipped === false}
+          />
+          <hr />
+          <button onClick={resetInput}>Reset</button>
+          <button onClick={onFlip}>Flip</button>
+        </div>
+      );
+    };
+    const ConvertUnit = () => {
+      return (
+        <div>
+          <h4>KM to miles</h4>
+          <span>Code Challenge ~</span>
+        </div>
+      );
+    };
+
+    const App = () => {
+      const [index, setIndex] = React.useState("0");
+
+      const onSelect = ({ target: { value } }) => {
+        setIndex(value);
+      };
+      return (
+        <div>
+          <h1>Converter</h1>
+          <select value={index} onChange={onSelect}>
+            <option value="0">Time</option>
+            <option value="1">Lenghth</option>
+          </select>
+          <hr />
+          {index === "0" ? <ConvertTime /> : <ConvertUnit />}
+        </div>
+      );
+    };
+
+    ReactDOM.render(<App />, root);
+  </script>
+</html>
