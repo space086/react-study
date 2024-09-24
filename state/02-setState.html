@@ -16,16 +16,16 @@
 
     const App = () => {
       const [counter, setCounter] = React.useState(0);
-      const onClick = () => {
-        counter = counter + 1
-      }
+      // const onClick = () => {
+      //   counter = counter + 1
+      // }
       function countUp() {
         setCounter((current) => current + 1); // trigger re-render
       }
       return (
         <div>
           <h3>Total clicks: {counter}</h3>
-          <button onClick={onClick}>Click me</button>
+          <button onClick={countUp}>Click me</button>
         </div>
       );
     };

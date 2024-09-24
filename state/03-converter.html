@@ -60,10 +60,47 @@
       );
     };
     const ConvertUnit = () => {
+      const [unit, setUnit] = React.useState(0);
+      const [convert, setConverter] = React.useState(false);
+
+      const onChangeUnit = ({ target: { value } }) => {
+        setUnit(value);
+      };
+      const resetBtn = () => setUnit(0);
+      const convertBtn = () => {
+        resetBtn();
+        setConverter((current) => !current);
+      }
       return (
         <div>
-          <h4>KM to miles</h4>
-          <span>Code Challenge ~</span>
+          {convert ? (
+            <h4>convert {unit} KM to miles</h4>
+          ) : (
+            <h4>convert {unit} miles to KM</h4>
+          )}
+          
+          <label htmlFor="km">KM</label>
+          <input //
+            value={convert ? unit * 1.609 : unit}
+            id="km"
+            type="number"
+            placeholder="KM"
+            onChange={onChangeUnit}
+            disabled={convert}
+          />
+          <br />
+          <label htmlFor="miles">Miles</label>
+          <input //
+            value={convert ? unit : unit / 1.609}
+            id="miles"
+            type="number"
+            placeholder="Miles"
+            onChange={onChangeUnit}
+            disabled={!convert}
+          />
+          <hr />
+          <button onClick={resetBtn}>Reset</button>
+          <button onClick={convertBtn}>{convert ? "Turn back" : "Invert"}</button>
         </div>
       );
     };
