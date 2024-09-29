@@ -64,8 +64,9 @@
 // export default App;
 
 
+/*
 // To Do List (24.09.29)
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 function App() {
   const [toDo, setToDo] = useState("");
@@ -92,6 +93,48 @@ function App() {
     {toDos.map((item, idx) => (
       <li key={idx}>{item}</li>
     ))}
+  </div>
+  );
+}
+
+export default App;
+*/
+
+/*
+// 암호화폐 사이트 (09.29)
+
+*/
+
+import { useState, useEffect } from "react";
+
+function App() {
+  const [loading, setLoading] = useState(true);
+  const [coins, setCoins] = useState([]);
+  useEffect(() => {
+    fetch("https://api.coinpaprika.com/v1/tickers")
+    .then((response) => response.json())
+    .then((json) => {
+      setCoins(json);
+      console.log("coins", coins);
+      setLoading(false);
+    });
+  }, [])
+
+  return (
+  <div>
+     <h1>The Coins! {loading ? "" : `(${coins.length})`}</h1>
+      {loading ? (
+        <strong>Loading...</strong>
+      ) : (
+        <select>
+          {coins.map((coin) => (
+            <option key={coin.id}>
+              {/* {coin.name} ({coin.symbol}): ${coin.quotes.USD.price} USD */}
+              {coin.name} ({coin.symbol}): {coin.quotes.USD.price}
+            </option>
+          ))}
+        </select>
+      )}
   </div>
   );
 }
