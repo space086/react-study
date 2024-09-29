@@ -141,9 +141,7 @@ export default App;
 */
 
 /*
-// 영화 소개 사이트 (09.29)
-
-*/
+// 영화 소개 사이트 (09.29) - 컴포넌트 나누기 전
 
 import { useState, useEffect } from "react";
 
@@ -187,6 +185,14 @@ function App() {
       )}
     </div>
   );
+}
+
+export default App;
+
+*/
+
+function App() {
+  return null;
 }
 
 export default App;
