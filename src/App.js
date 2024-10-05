@@ -194,6 +194,10 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Detail from "./routes/Detail";
 import Home from "./routes/Home";
 
+function Food({ favourite }) {
+  return <h1>I like {favourite}</h1>;
+}
+
 function App() {
   return (
     <Router>
@@ -211,8 +215,14 @@ function App() {
           <Home />
         </Route>
       </Switch>
+      <Food favourite="kimchi" />
+      <Food favourite="ramen" />
+      <Food favourite="samgiopsal" />
+      <Food favourite="chukumi" />
     </Router>
   );
 }
+
+
 
 export default App;
