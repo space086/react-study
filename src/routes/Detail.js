@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-function Detail() {
+function Detail(props) {
+  console.log(props);
   const { id } = useParams();
   const getMovie = async () => {
     const json = await (
