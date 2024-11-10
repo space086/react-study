@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.js": "/react-study.git/static/js/main.bea17c6b.js",
-    "index.html": "/react-study.git/index.html",
-    "main.bea17c6b.js.map": "/react-study.git/static/js/main.bea17c6b.js.map"
+    "main.js": "/react-study/static/js/main.bea17c6b.js",
+    "index.html": "/react-study/index.html",
+    "main.bea17c6b.js.map": "/react-study/static/js/main.bea17c6b.js.map"
   },
   "entrypoints": [
     "static/js/main.bea17c6b.js"
